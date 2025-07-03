@@ -39,6 +39,10 @@
   },
   "_panels": [
     {
+      "title": "Backup",
+      "_base": "row"
+    },
+    {
       "title": "$bucket: vBuckets watched",
       "_base": "panel",
       "_targets": [
@@ -141,6 +145,72 @@
           "datasource": "{data-source-name}",
           "format": "heatmap",
           "expr": "contbk_backed_up_part_time_bucket{bucket=\"$bucket\"}",
+          "legendFormat": "__auto",
+          "_base": "target"
+        }
+      ]
+    },
+    {
+      "title": "Retention",
+      "_base": "row"
+    },
+    {
+      "title": "$bucket: Retention runs",
+      "_base": "panel",
+      "_targets": [
+        {
+          "datasource": "{data-source-name}",
+          "expr": "contbk_retention_runs{bucket=\"$bucket\"}",
+          "legendFormat": "__auto",
+          "_base": "target"
+        }
+      ]
+    },
+    {
+      "title": "$bucket: Time taken to run retention",
+      "_base": "panel",
+      "type": "heatmap",
+      "options": {
+        "yAxis": {
+          "unit": "s"
+        }
+      },
+      "_targets": [
+        {
+          "datasource": "{data-source-name}",
+          "format": "heatmap",
+          "expr": "contbk_retention_run_time_bucket{bucket=\"$bucket\"}",
+          "legendFormat": "__auto",
+          "_base": "target"
+        }
+      ]
+    },
+    {
+      "title": "$bucket: Retention consolidation runs",
+      "_base": "panel",
+      "_targets": [
+        {
+          "datasource": "{data-source-name}",
+          "expr": "contbk_retention_consolidation_runs{bucket=\"$bucket\"}",
+          "legendFormat": "__auto",
+          "_base": "target"
+        }
+      ]
+    },
+    {
+      "title": "$bucket: Time taken to run retention consolidation",
+      "_base": "panel",
+      "type": "heatmap",
+      "options": {
+        "yAxis": {
+          "unit": "s"
+        }
+      },
+      "_targets": [
+        {
+          "datasource": "{data-source-name}",
+          "format": "heatmap",
+          "expr": "contbk_retention_consolidation_run_time_bucket{bucket=\"$bucket\"}",
           "legendFormat": "__auto",
           "_base": "target"
         }
